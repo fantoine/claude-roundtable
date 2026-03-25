@@ -26,12 +26,21 @@ import {
   buildRemoteConversionPrompt,
 } from './registry.js';
 
-const pkgPath = join(fileURLToPath(import.meta.url), '..', '..', 'package.json');
-const pkg = JSON.parse(await readFile(pkgPath, 'utf-8'));
+async function loadVersion(): Promise<string> {
+  const dir = join(fileURLToPath(import.meta.url), '..');
+  // Try sibling (bundle layout: server/package.json), then parent (dev layout: ../../package.json)
+  for (const candidate of [join(dir, 'package.json'), join(dir, '..', 'package.json')]) {
+    try {
+      const pkg = JSON.parse(await readFile(candidate, 'utf-8'));
+      return pkg.version;
+    } catch { /* try next */ }
+  }
+  return '0.0.0';
+}
 
 const server = new McpServer({
   name: 'roundtable',
-  version: pkg.version,
+  version: await loadVersion(),
 });
 
 // --- Prompts ---

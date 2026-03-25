@@ -38,7 +38,7 @@ cp "$ROOT/mcp-server/dist/"*.js "$DIST_DIR/server/"
 cp "$ROOT/mcp-server/package.json" "$DIST_DIR/server/package.json"
 cd "$DIST_DIR/server"
 npm install --omit=dev --silent
-rm -f package.json package-lock.json
+rm -f package-lock.json
 cd "$ROOT"
 echo "  ✓ Bundle ready"
 
