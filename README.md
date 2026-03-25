@@ -14,7 +14,8 @@ A Claude Code plugin providing slash commands:
 ### Install
 
 ```bash
-claude plugin install fantoine/claude-roundtable
+claude plugin marketplace add fantoine/claude-plugins
+claude plugin install roundtable
 ```
 
 ## Claude Desktop Extension (MCP Server)
@@ -110,4 +111,4 @@ extension/
 
 ## License
 
-MIT
+Apache 2.0
