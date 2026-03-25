@@ -5,6 +5,8 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod';
 import { join } from 'node:path';
 import { homedir } from 'node:os';
+import { mkdir, writeFile, readFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
 import {
   loadAllPersonas,
   loadPersonaBodies,
@@ -24,9 +26,12 @@ import {
   buildRemoteConversionPrompt,
 } from './registry.js';
 
+const pkgPath = join(fileURLToPath(import.meta.url), '..', '..', 'package.json');
+const pkg = JSON.parse(await readFile(pkgPath, 'utf-8'));
+
 const server = new McpServer({
   name: 'roundtable',
-  version: '0.1.0',
+  version: pkg.version,
 });
 
 // --- Prompts ---
@@ -222,9 +227,8 @@ server.tool(
   {
     repo: z.string().describe('GitHub repository (e.g. "owner/repo" or full URL)'),
     path: z.string().describe('Path to the agent .md file in the repo'),
-    level: z.enum(['global', 'project']).default('global').describe('Where to save the persona: global (~/.claude) or project (.claude)'),
   },
-  async ({ repo, path, level }) => {
+  async ({ repo, path }) => {
     const agent = await fetchRemoteAgent(repo, path);
 
     if (!agent) {
@@ -233,9 +237,7 @@ server.tool(
       };
     }
 
-    const outputDir = level === 'global'
-      ? join(homedir(), '.claude', 'roundtable', 'personas')
-      : join(process.cwd(), '.claude', 'roundtable', 'personas');
+    const outputDir = join(homedir(), '.claude', 'roundtable', 'personas');
     const outputPath = join(outputDir, `${agent.name.toLowerCase().replace(/\s+/g, '-')}.md`);
 
     return {
@@ -250,6 +252,43 @@ server.tool(
         },
       ],
     };
+  },
+);
+
+server.tool(
+  'save_persona',
+  'Save a generated persona markdown file to disk. Use this after generating persona content with get_conversion_prompt or import_persona.',
+  {
+    name: z.string().describe('Persona name (used to derive the filename, e.g. "Atlas" becomes atlas.md)'),
+    content: z.string().describe('The full persona markdown content (frontmatter + body)'),
+  },
+  async ({ name, content }) => {
+    try {
+      const filename = `${name.toLowerCase().replace(/\s+/g, '-')}.md`;
+      const dir = join(homedir(), '.claude', 'roundtable', 'personas');
+      const filePath = join(dir, filename);
+
+      await mkdir(dir, { recursive: true });
+      await writeFile(filePath, content, 'utf-8');
+
+      return {
+        content: [
+          {
+            type: 'text',
+            text: `✅ Persona "${name}" saved to ${filePath}`,
+          },
+        ],
+      };
+    } catch (err) {
+      return {
+        content: [
+          {
+            type: 'text',
+            text: `❌ Failed to save persona: ${String(err)}`,
+          },
+        ],
+      };
+    }
   },
 );
 
