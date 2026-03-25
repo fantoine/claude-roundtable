@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/mcpb/main/schema.json",
+  "manifest_version": "0.3",
+
+  "name": "roundtable",
+  "display_name": "Roundtable",
+  "version": "0.1.0",
+  "description": "Multi-persona discussions with your Claude agents. Convert any Claude agent into a rich persona and orchestrate collaborative conversations.",
+  "long_description": "Roundtable turns your Claude agents into distinctive personas that discuss topics together in a single conversation. Install agents, convert them into personas with unique voices and communication styles, then launch a multi-persona discussion on any topic.\n\n**Features**\n- Convert Claude agents into rich personas with tone of voice, principles, and identity\n- Auto-select relevant personas based on your discussion topic\n- Conversational format with short, punchy responses\n- Exit summary with questions raised by each persona",
+
+  "author": {
+    "name": "fantoine"
+  },
+
+  "license": "MIT",
+  "icon": "icon.png",
+
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/index.js"]
+    }
+  },
+
+  "tools": [
+    {
+      "name": "list_personas",
+      "description": "List all available roundtable personas with their metadata"
+    },
+    {
+      "name": "discover_agents",
+      "description": "Scan for Claude agents that can be converted to personas"
+    },
+    {
+      "name": "get_conversion_prompt",
+      "description": "Generate the conversion prompt for a specific Claude agent"
+    },
+    {
+      "name": "browse_agents",
+      "description": "Browse a GitHub repository to find Claude agents that can be imported as personas"
+    },
+    {
+      "name": "import_persona",
+      "description": "Fetch a Claude agent from a GitHub repo and generate the conversion prompt to create a persona directly"
+    },
+    {
+      "name": "refresh_manifest",
+      "description": "Rescan all persona files and rebuild the manifest from scratch"
+    }
+  ],
+
+  "prompts": [
+    {
+      "name": "start-roundtable",
+      "description": "Start a multi-persona roundtable discussion with all available personas",
+      "text": "Start a roundtable discussion with the available personas. Optionally provide a topic to filter personas by expertise."
+    }
+  ],
+
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"]
+  },
+
+  "keywords": ["personas", "multi-agent", "discussion", "agents"]
+}

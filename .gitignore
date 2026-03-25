@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+icon.png
+.idea/
+*.iml
+.claude/agents/
+.claude/roundtable/
+.claude/settings.local.json

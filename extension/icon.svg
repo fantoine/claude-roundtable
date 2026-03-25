@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="bubble1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+    <linearGradient id="bubble2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9"/>
+      <stop offset="100%" style="stop-color:#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="bubble3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#fbbf24"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded rect -->
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+
+  <!-- Subtle grid dots -->
+  <g opacity="0.06" fill="#ffffff">
+    <circle cx="96" cy="96" r="3"/>
+    <circle cx="160" cy="96" r="3"/>
+    <circle cx="224" cy="96" r="3"/>
+    <circle cx="288" cy="96" r="3"/>
+    <circle cx="352" cy="96" r="3"/>
+    <circle cx="416" cy="96" r="3"/>
+    <circle cx="96" cy="160" r="3"/>
+    <circle cx="416" cy="160" r="3"/>
+    <circle cx="96" cy="416" r="3"/>
+    <circle cx="160" cy="416" r="3"/>
+    <circle cx="224" cy="416" r="3"/>
+    <circle cx="288" cy="416" r="3"/>
+    <circle cx="352" cy="416" r="3"/>
+    <circle cx="416" cy="416" r="3"/>
+  </g>
+
+  <!-- Chat bubble top-left (purple) -->
+  <rect x="64" y="108" width="190" height="110" rx="22" fill="url(#bubble1)"/>
+  <polygon points="86,218 64,248 120,218" fill="#7c3aed"/>
+
+  <!-- Chat bubble top-right (blue) -->
+  <rect x="258" y="108" width="190" height="110" rx="22" fill="url(#bubble2)"/>
+  <polygon points="426,218 448,248 392,218" fill="#0ea5e9"/>
+
+  <!-- Chat bubble bottom-center (amber) -->
+  <rect x="161" y="278" width="190" height="110" rx="22" fill="url(#bubble3)"/>
+  <polygon points="224,278 200,248 260,278" fill="#f59e0b"/>
+
+  <!-- Persona dots inside bubbles -->
+  <!-- Purple bubble: 2 dots -->
+  <circle cx="120" cy="163" r="14" fill="rgba(255,255,255,0.9)"/>
+  <circle cx="160" cy="163" r="14" fill="rgba(255,255,255,0.9)"/>
+  <circle cx="200" cy="163" r="14" fill="rgba(255,255,255,0.9)"/>
+
+  <!-- Blue bubble: 2 dots -->
+  <circle cx="314" cy="163" r="14" fill="rgba(255,255,255,0.9)"/>
+  <circle cx="354" cy="163" r="14" fill="rgba(255,255,255,0.9)"/>
+  <circle cx="394" cy="163" r="14" fill="rgba(255,255,255,0.9)"/>
+
+  <!-- Amber bubble: 3 dots -->
+  <circle cx="217" cy="333" r="14" fill="rgba(255,255,255,0.9)"/>
+  <circle cx="257" cy="333" r="14" fill="rgba(255,255,255,0.9)"/>
+  <circle cx="297" cy="333" r="14" fill="rgba(255,255,255,0.9)"/>
+
+  <!-- Sparkle accents -->
+  <g fill="#ffffff" opacity="0.5">
+    <circle cx="440" cy="72" r="4"/>
+    <circle cx="456" cy="60" r="2.5"/>
+    <circle cx="428" cy="58" r="2"/>
+    <circle cx="72" cy="440" r="4"/>
+    <circle cx="58" cy="454" r="2.5"/>
+    <circle cx="86" cy="454" r="2"/>
+  </g>
+</svg>
