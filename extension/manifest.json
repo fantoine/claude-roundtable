@@ -9,7 +9,7 @@
   "long_description": "Roundtable turns your Claude agents into distinctive personas that discuss topics together in a single conversation. Install agents, convert them into personas with unique voices and communication styles, then launch a multi-persona discussion on any topic.\n\n**Features**\n- Convert Claude agents into rich personas with tone of voice, principles, and identity\n- Auto-select relevant personas based on your discussion topic\n- Conversational format with short, punchy responses\n- Exit summary with questions raised by each persona",
 
   "author": {
-    "name": "fantoine"
+    "name": "Fabien ANTOINE"
   },
 
   "license": "Apache-2.0",

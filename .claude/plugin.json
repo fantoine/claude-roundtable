@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Multi-persona discussions with your Claude agents. Convert any Claude agent into a rich persona and orchestrate collaborative mono-LLM conversations.",
   "author": {
-    "name": "fantoine"
+    "name": "Fabien ANTOINE"
   },
   "license": "Apache-2.0"
 }
