@@ -5,8 +5,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod';
 import { join } from 'node:path';
 import { homedir } from 'node:os';
-import { mkdir, writeFile, readFile } from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
+import { mkdir, writeFile } from 'node:fs/promises';
 import {
   loadAllPersonas,
   loadPersonaBodies,
@@ -26,21 +25,11 @@ import {
   buildRemoteConversionPrompt,
 } from './registry.js';
 
-async function loadVersion(): Promise<string> {
-  const dir = join(fileURLToPath(import.meta.url), '..');
-  // Try sibling (bundle layout: server/package.json), then parent (dev layout: ../../package.json)
-  for (const candidate of [join(dir, 'package.json'), join(dir, '..', 'package.json')]) {
-    try {
-      const pkg = JSON.parse(await readFile(candidate, 'utf-8'));
-      return pkg.version;
-    } catch { /* try next */ }
-  }
-  return '0.0.0';
-}
+const VERSION = '__VERSION__';
 
 const server = new McpServer({
   name: 'roundtable',
-  version: await loadVersion(),
+  version: VERSION,
 });
 
 // --- Prompts ---
