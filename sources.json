@@ -1,0 +1,24 @@
+{
+  "sources": [
+    {
+      "repo": "VoltAgent/awesome-claude-code-subagents",
+      "description": "134+ community agents covering a wide range of development use cases",
+      "categories": ["dev", "research", "analysis"]
+    },
+    {
+      "repo": "Roberdan/convergio-community",
+      "description": "Enterprise AI agents for strategic leadership, compliance, and organizational transformation",
+      "categories": ["strategy", "leadership", "legal", "business-ops"]
+    },
+    {
+      "repo": "aiagentskit/claude-agents-library",
+      "description": "Agents for design, marketing, product, finance, and engineering",
+      "categories": ["design", "marketing", "product", "finance", "dev"]
+    },
+    {
+      "repo": "NicholasSpisak/claude-code-subagents",
+      "description": "Multi-domain agents including finance, strategy, growth, market research, and operations",
+      "categories": ["finance", "strategy", "growth", "marketing", "ops", "dev"]
+    }
+  ]
+}
