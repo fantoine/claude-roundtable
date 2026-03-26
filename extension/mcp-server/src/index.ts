@@ -90,6 +90,48 @@ server.prompt(
 
 // --- Tools ---
 
+const SOURCES_URL = 'https://raw.githubusercontent.com/fantoine/claude-roundtable/main/sources.json';
+
+interface Source {
+  repo: string;
+  description: string;
+  categories: string[];
+}
+
+server.tool(
+  'list_sources',
+  'List curated repositories of agents that can be imported as roundtable personas. Use browse_agents to explore a specific source.',
+  {},
+  async () => {
+    try {
+      const resp = await fetch(SOURCES_URL, { headers: { 'User-Agent': 'roundtable-mcp' } });
+      if (!resp.ok) {
+        return {
+          content: [{ type: 'text', text: `❌ Failed to fetch sources: HTTP ${resp.status}` }],
+        };
+      }
+      const data = (await resp.json()) as { sources: Source[] };
+
+      const lines = data.sources.map(
+        (s) => `- **${s.repo}** — ${s.description}\n  categories: ${s.categories.join(', ')}`,
+      );
+
+      return {
+        content: [
+          {
+            type: 'text',
+            text: `📚 Available agent sources (${data.sources.length}):\n\n${lines.join('\n\n')}\n\nUse \`browse_agents\` with a repo name to explore and import personas.`,
+          },
+        ],
+      };
+    } catch (err) {
+      return {
+        content: [{ type: 'text', text: `❌ Failed to fetch sources: ${String(err)}` }],
+      };
+    }
+  },
+);
+
 server.tool(
   'list_personas',
   'List all available roundtable personas with their metadata',
