@@ -4,7 +4,7 @@
 
 Roundtable lets you run multi-persona discussions where Claude plays several distinct characters -- each with their own expertise, communication style, and personality. Instead of getting one generic answer, you get a debate between a security expert, a product strategist, and a performance engineer -- all in the same conversation.
 
-## Why?
+## 💡 Why?
 
 When you ask Claude a question, you get one perspective. With Roundtable, you get structured disagreement. A UX designer will push back on the backend engineer's API design. A finance lead will challenge the growth marketer's budget. Personas build on each other's ideas, ask pointed questions, and surface blind spots you wouldn't have thought of.
 
@@ -14,7 +14,7 @@ This is particularly useful for:
 - **Code reviews** -- combine security, performance, and readability perspectives
 - **Brainstorming** -- let different personalities riff on an idea together
 
-## Installation
+## 📦 Installation
 
 Roundtable is available as a **Claude Code plugin** and as a **Claude Desktop extension**.
 
@@ -29,7 +29,7 @@ claude plugin install roundtable
 
 Download the latest `.mcpb` file from the [Releases page](https://github.com/fantoine/claude-roundtable/releases/latest), then double-click it to install.
 
-## Getting started
+## 🚀 Getting started
 
 Roundtable needs **personas** to work. Personas are character profiles that define how each expert thinks, speaks, and what they care about.
 
@@ -37,7 +37,7 @@ Personas are generated from **Claude agents** -- the markdown files that give Cl
 
 Roundtable takes any Claude agent definition and transforms it into a rich persona with a unique name, personality, tone of voice, and communication style -- so that each expert feels distinct in a conversation.
 
-### Import agents from community sources
+### 📚 Import agents from community sources
 
 Roundtable comes with a curated list of agent repositories you can browse and import from.
 
@@ -61,7 +61,7 @@ This shows repositories like [VoltAgent/awesome-claude-code-subagents](https://g
 
 Each agent definition will be analyzed and transformed into a persona with a distinctive name, personality, and communication style, then saved to `~/.claude/roundtable/personas/`.
 
-### Convert your own agents
+### 🔄 Convert your own agents
 
 If you already have Claude agents installed locally (in `.claude/agents/` or `~/.claude/agents/`), you can convert them into personas directly.
 
@@ -75,7 +75,7 @@ If you already have Claude agents installed locally (in `.claude/agents/` or `~/
 
 > "Discover my local agents and convert them to Roundtable personas"
 
-### Start a discussion
+### 🎯 Start a discussion
 
 Once you have personas installed:
 
@@ -97,9 +97,9 @@ or with a topic:
 
 Roundtable will select the most relevant personas, present the lineup, and kick off the conversation. You can steer the discussion, ask follow-up questions, or add/remove participants at any time.
 
-## Managing personas
+## 🎭 Managing personas
 
-### Where personas are stored
+### 📂 Where personas are stored
 
 | Level | Path | Scope |
 |-------|------|-------|
@@ -108,7 +108,7 @@ Roundtable will select the most relevant personas, present the lineup, and kick 
 
 In **Claude Desktop**, personas are always saved globally. In **Claude Code**, they follow the same level as the source agent (global agent = global persona, project agent = project persona).
 
-### Other commands
+### ⚡ Commands reference
 
 **Claude Code:**
 
@@ -131,7 +131,7 @@ In **Claude Desktop**, personas are always saved globally. In **Claude Code**, t
 | `get_conversion_prompt` | "Generate a persona from my llm-architect agent" |
 | `refresh_manifest` | "Rebuild the Roundtable persona manifest" |
 
-### Custom sources
+### 🌐 Custom sources
 
 The built-in sources are just a starting point. You can convert agents from **any public GitHub repository** that contains Claude agent definitions:
 
@@ -143,7 +143,7 @@ The built-in sources are just a starting point. You can convert agents from **an
 
 > Provide a custom repo URL when prompted, e.g. `https://github.com/owner/repo`
 
-### Create a persona from scratch
+### ✏️ Create a persona from scratch
 
 You can also write a persona file manually. Create a `.md` file in the personas directory:
 
