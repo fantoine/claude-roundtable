@@ -1,113 +1,185 @@
 # Roundtable
 
-Multi-persona discussions for Claude. Convert any Claude agent into a rich persona and orchestrate collaborative mono-LLM conversations where multiple expert characters discuss topics together.
+**Turn Claude into a room full of experts.**
 
-## Claude Code Plugin
+Roundtable lets you run multi-persona discussions where Claude plays several distinct characters -- each with their own expertise, communication style, and personality. Instead of getting one generic answer, you get a debate between a security expert, a product strategist, and a performance engineer -- all in the same conversation.
 
-A Claude Code plugin providing slash commands:
+## Why?
 
-- `/roundtable:start` — Launch a multi-persona discussion
-- `/roundtable:convert` — Convert Claude agents into roundtable personas
-- `/roundtable:list` — List all available personas
-- `/roundtable:refresh` — Rescan persona files and rebuild the manifest
+When you ask Claude a question, you get one perspective. With Roundtable, you get structured disagreement. A UX designer will push back on the backend engineer's API design. A finance lead will challenge the growth marketer's budget. Personas build on each other's ideas, ask pointed questions, and surface blind spots you wouldn't have thought of.
 
-### Install
+This is particularly useful for:
+- **Architecture decisions** -- get opposing trade-offs from different specialists
+- **Strategy and planning** -- hear from product, marketing, finance, and engineering simultaneously
+- **Code reviews** -- combine security, performance, and readability perspectives
+- **Brainstorming** -- let different personalities riff on an idea together
+
+## Installation
+
+Roundtable is available as a **Claude Code plugin** and as a **Claude Desktop extension**.
+
+### Claude Code
 
 ```bash
 claude plugin marketplace add fantoine/claude-plugins
 claude plugin install roundtable
 ```
 
-## Claude Desktop Extension (MCP Server)
+### Claude Desktop
 
-An MCP server exposing the same functionality to Claude Desktop, Cursor, VS Code, and any MCP-compatible client.
+Download the latest `.mcpb` file from the [Releases page](https://github.com/fantoine/claude-roundtable/releases/latest), then double-click it to install.
 
-### Install
+## Getting started
 
-```bash
-cd extension/mcp-server
-npm install
-npm run build
+Roundtable needs **personas** to work. Personas are character profiles that define how each expert thinks, speaks, and what they care about.
+
+Personas are generated from **Claude agents** -- the markdown files that give Claude specialized expertise (typically stored in `.claude/agents/`). If you're not familiar with Claude agents, see the [official documentation](https://code.claude.com/docs/en/sub-agents). There are hundreds of community-built agents available on GitHub, covering everything from software architecture to competitive analysis.
+
+Roundtable takes any Claude agent definition and transforms it into a rich persona with a unique name, personality, tone of voice, and communication style -- so that each expert feels distinct in a conversation.
+
+### Import agents from community sources
+
+Roundtable comes with a curated list of agent repositories you can browse and import from.
+
+**Claude Code:**
+
+```
+/roundtable:sources
 ```
 
-Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json`):
+**Claude Desktop:**
 
-```json
-{
-  "mcpServers": {
-    "roundtable": {
-      "command": "node",
-      "args": ["/absolute/path/to/extension/mcp-server/dist/index.js"]
-    }
-  }
-}
+> "List the available agent sources for Roundtable"
+
+This shows repositories like [VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents) (134+ agents) or [Roberdan/convergio-community](https://github.com/Roberdan/convergio-community) (strategy, legal, business ops). You can then browse a source and pick which agents to convert into personas.
+
+**Claude Desktop -- step by step:**
+
+> "Browse the agents from VoltAgent/awesome-claude-code-subagents"
+
+> "Import the competitive-analyst, market-researcher, and trend-analyst as personas"
+
+Each agent definition will be analyzed and transformed into a persona with a distinctive name, personality, and communication style, then saved to `~/.claude/roundtable/personas/`.
+
+### Convert your own agents
+
+If you already have Claude agents installed locally (in `.claude/agents/` or `~/.claude/agents/`), you can convert them into personas directly.
+
+**Claude Code:**
+
+```
+/roundtable:convert
 ```
 
-### MCP Capabilities
+**Claude Desktop:**
 
-| Type | Name | Description |
-|------|------|-------------|
-| Prompt | `start-roundtable` | Start a roundtable discussion (optional `topic` filter) |
-| Tool | `list_personas` | List all personas with metadata |
-| Tool | `discover_agents` | Scan for convertible Claude agents |
-| Tool | `get_conversion_prompt` | Generate conversion prompt for an agent |
-| Resource | `roundtable://personas` | JSON list of all personas |
+> "Discover my local agents and convert them to Roundtable personas"
 
-## Persona Format
+### Start a discussion
 
-Personas are stored as markdown files with YAML frontmatter:
+Once you have personas installed:
 
-- **Global**: `~/.claude/roundtable/personas/*.md`
-- **Project**: `.claude/roundtable/personas/*.md` (overrides global)
+**Claude Code:**
+
+```
+/roundtable:start
+```
+
+or with a topic:
+
+```
+/roundtable:start Should we migrate our monolith to microservices?
+```
+
+**Claude Desktop:**
+
+> "Start a roundtable discussion about our pricing strategy for the enterprise segment"
+
+Roundtable will select the most relevant personas, present the lineup, and kick off the conversation. You can steer the discussion, ask follow-up questions, or add/remove participants at any time.
+
+## Managing personas
+
+### Where personas are stored
+
+| Level | Path | Scope |
+|-------|------|-------|
+| Global | `~/.claude/roundtable/personas/*.md` | Available everywhere |
+| Project | `.claude/roundtable/personas/*.md` | Current project only (overrides global) |
+
+In **Claude Desktop**, personas are always saved globally. In **Claude Code**, they follow the same level as the source agent (global agent = global persona, project agent = project persona).
+
+### Other commands
+
+**Claude Code:**
+
+| Command | Description |
+|---------|-------------|
+| `/roundtable:list` | List all installed personas |
+| `/roundtable:sources` | Browse and import from community agent repos |
+| `/roundtable:convert` | Convert local agents into personas |
+| `/roundtable:refresh` | Rebuild the persona manifest after manual edits |
+
+**Claude Desktop** exposes the same capabilities via MCP tools. Just ask in natural language:
+
+| Tool | Example prompt |
+|------|---------------|
+| `list_sources` | "Show me the available agent sources for Roundtable" |
+| `list_personas` | "List all my Roundtable personas" |
+| `browse_agents` | "Browse agents from VoltAgent/awesome-claude-code-subagents" |
+| `import_persona` | "Import the competitive-analyst agent from VoltAgent/awesome-claude-code-subagents" |
+| `discover_agents` | "Scan my local Claude agents that can be converted to personas" |
+| `get_conversion_prompt` | "Generate a persona from my llm-architect agent" |
+| `refresh_manifest` | "Rebuild the Roundtable persona manifest" |
+
+### Custom sources
+
+The built-in sources are just a starting point. You can convert agents from **any public GitHub repository** that contains Claude agent definitions:
+
+**Claude Desktop:**
+
+> "Browse the agents from owner/repo and import the ones related to data engineering"
+
+**Claude Code** (in the `/roundtable:sources` flow):
+
+> Provide a custom repo URL when prompted, e.g. `https://github.com/owner/repo`
+
+### Create a persona from scratch
+
+You can also write a persona file manually. Create a `.md` file in the personas directory:
 
 ```markdown
 ---
-name: Atlas
+name: Nova
 icon: 🧠
 title: LLM Architect
-source: llm-architect
+source: custom
 expertise:
   - llm-systems
   - rag
   - model-selection
-  - inference-optimization
 ---
 
-# Atlas 🧠 — LLM Architect
+# Nova 🧠 -- LLM Architect
 
-Identity: Senior LLM architect with deep expertise in designing
-production AI systems.
+Identity: Senior LLM architect with deep expertise in production AI systems.
+Specializes in model selection, RAG architectures, and multi-model orchestration.
 
 Communication style: Thinks in system diagrams and trade-off matrices.
-Speaks with measured precision.
+Speaks with measured precision -- every architectural decision backed by a clear rationale.
+
+Tone of voice: Calm and deliberate, often pausing with "let's think about this systematically..."
+Frames every problem as inputs, outputs, and constraints. Fond of saying "it depends" before
+giving a surprisingly definitive answer.
 
 Principles:
 - Start with the simplest architecture that solves the problem
 - Latency, cost, and reliability are first-class design constraints
 - Every LLM call should be observable and measurable
+- Design for graceful degradation: fallback models, circuit breakers
+- Benchmark before you optimize, measure before you benchmark
 ```
 
-## How It Works
-
-1. **Install Claude agents** as usual in `.claude/agents/` or `~/.claude/agents/`
-2. **Convert** them to personas: `/roundtable:convert` (plugin) or `get_conversion_prompt` tool (MCP)
-3. **Launch** roundtable: `/roundtable:start` (plugin) or `start-roundtable` prompt (MCP)
-4. **Discuss** — Claude orchestrates the conversation, selecting 2-3 relevant personas per message, each responding in character
-
-The discussion is **mono-LLM**: a single Claude instance plays all roles, guided by the persona definitions. This gives natural cross-talk, shared context, and zero latency between agents.
-
-## Project Structure
-
-```
-.claude/
-  plugin.json          # Claude Code plugin manifest
-  commands/            # Slash commands
-extension/
-  manifest.json        # MCP extension manifest
-  icon.svg
-  mcp-server/          # MCP server (TypeScript)
-  pack.sh              # Packaging script
-```
+After creating or editing persona files manually, run `/roundtable:refresh` (Claude Code) or ask Claude Desktop to refresh the manifest.
 
 ## License
 
