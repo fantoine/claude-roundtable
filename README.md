@@ -4,6 +4,25 @@
 
 Roundtable lets you run multi-persona discussions where Claude plays several distinct characters -- each with their own expertise, communication style, and personality. Instead of getting one generic answer, you get a debate between a security expert, a product strategist, and a performance engineer -- all in the same conversation.
 
+<details>
+<summary><strong>Example: "Should we build or buy our authentication system?"</strong></summary>
+
+```
+$ /roundtable-start Should we build or buy our authentication system?
+```
+
+Roundtable selects the right experts and kicks off the debate:
+
+> 🏗️ **Baccio** · 🔒 **Luca** · ⚖️ **Angela** · 💰 **Amy**
+>
+> ⚖️ **Angela** — *Before we jump into pros and cons, let's agree on the decision criteria first. I'd propose four: total cost of ownership over 3 years, time-to-market, security risk profile, and strategic differentiation — is auth a core competency or commodity infrastructure for your business?*
+>
+> 🔒 **Luca** — *Authentication is the highest-value target in your entire system. If you build, you own every vulnerability. If you buy, you're outsourcing your most critical security boundary to a vendor whose incident response plan you probably haven't audited. Neither option is "safer" by default.*
+>
+> 🏗️ **Baccio** — *I'd add one criterion: integration cost. People massively underestimate this on the "buy" side. A managed auth provider isn't just a drop-in. It's a contract your entire system couples to — your session model, your authorization layer, your user data model.*
+
+</details>
+
 ## 💡 Why?
 
 When you ask Claude a question, you get one perspective. With Roundtable, you get structured disagreement. A UX designer will push back on the backend engineer's API design. A finance lead will challenge the growth marketer's budget. Personas build on each other's ideas, ask pointed questions, and surface blind spots you wouldn't have thought of.
@@ -106,36 +125,6 @@ or with a topic:
 > "Start a roundtable discussion about our pricing strategy for the enterprise segment"
 
 Roundtable will select the most relevant personas, present the lineup, and kick off the conversation. You can steer the discussion, ask follow-up questions, or add/remove participants at any time.
-
-<details>
-<summary><strong>Example: "Should we build or buy our authentication system?"</strong></summary>
-
-```
-$ /roundtable-start Should we build or buy our authentication system?
-```
-
-Roundtable loads the available personas and suggests a lineup:
-
-> **Here's the lineup I'd recommend for this one:**
->
-> - 🏗️ **Baccio** — Elite Technology Architect
-> - 🔒 **Luca** — Cybersecurity Architect & Risk Expert
-> - ⚖️ **Angela** — Decision Architect & Strategic Choice Optimizer
-> - 💰 **Amy** — Chief Financial Officer & Strategic Finance Lead
->
-> *A tech architect, a security expert, a decision specialist, and a finance lead — covers the core angles of a build-vs-buy decision.*
-
-After confirming the lineup, the discussion starts:
-
-> ⚖️ **Angela** — *Before we jump into pros and cons, let's agree on the decision criteria first. I'd propose four: total cost of ownership over 3 years, time-to-market, security risk profile, and strategic differentiation — is auth a core competency or commodity infrastructure for your business? That last one is the real question underneath the stated one.*
->
-> 🔒 **Luca** — *Authentication is the highest-value target in your entire system. If you build, you own every vulnerability, every patch cycle, every credential storage decision. If you buy, you're outsourcing your most critical security boundary to a vendor whose incident response plan you probably haven't audited. Neither option is "safer" by default.*
->
-> 🏗️ **Baccio** — *Angela's framing is right — but I'd add one criterion: integration cost. People massively underestimate this on the "buy" side. A managed auth provider isn't just a drop-in. It's a contract your entire system couples to — your session model, your authorization layer, your user data model. What's the failure mode if that vendor changes their API, raises prices 3x, or goes down for 4 hours?*
-
-From there, you can steer the conversation, ask specific personas to elaborate, or introduce new angles.
-
-</details>
 
 ## 🎭 Managing personas
 
