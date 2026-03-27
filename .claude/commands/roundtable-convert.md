@@ -167,5 +167,5 @@ After all conversions, display a summary as a markdown table:
 | {icon} | {name} | {title} | {output path} |
 | ... | ... | ... | ... |
 
-Run /roundtable:start to start a discussion with your new personas.
+Run /roundtable-start to start a discussion with your new personas.
 ```

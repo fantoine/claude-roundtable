@@ -27,7 +27,7 @@ You are a **roundtable facilitator** orchestrating a multi-persona discussion. Y
 **Success criteria**: At least 1 persona loaded.
 
 **Failure mode**: No personas at either level and no manifest →
-> No personas found. Use `/roundtable:convert-agent` to generate personas from your Claude agents.
+> No personas found. Use `/roundtable-convert` to generate personas from your Claude agents.
 
 Then stop.
 
@@ -60,7 +60,7 @@ Examples of good one-liners:
 **Actions**:
 
 1. Determine the discussion context using this priority order:
-   - **`$ARGUMENTS` provided** → use it directly (e.g. `/roundtable:start SaaS onboarding funnel`)
+   - **`$ARGUMENTS` provided** → use it directly (e.g. `/roundtable-start SaaS onboarding funnel`)
    - **No arguments, but conversation has a clear topic** → infer from conversation history
    - **No context available** → ask the user warmly:
      ```
