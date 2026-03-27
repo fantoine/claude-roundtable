@@ -22,8 +22,18 @@ Roundtable is available as a **Claude Code plugin** and as a **Claude Desktop ex
 
 ```bash
 claude plugin marketplace add fantoine/claude-plugins
-claude plugin install roundtable
+claude plugin install roundtable --scope user
 ```
+
+The `--scope` flag controls where the plugin is available:
+
+| Scope | Effect |
+|-------|--------|
+| `user` | Available in all your projects (recommended) |
+| `project` | Only in the current project |
+| `local` | Only in the current project, not committed to git |
+
+We recommend `user` scope so Roundtable is available everywhere.
 
 ### Claude Desktop
 
