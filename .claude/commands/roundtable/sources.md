@@ -35,4 +35,4 @@ Total: {count} sources
    - For each selected agent, generate the conversion prompt and save the resulting persona using the standard persona format.
    - Save personas to `$HOME/.claude/roundtable/personas/`.
 
-6. After all imports, suggest running `/roundtable-refresh` to update the manifest.
+6. After all imports, suggest running `/roundtable:refresh` to update the manifest.

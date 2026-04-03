@@ -21,7 +21,7 @@ List all available roundtable personas from both levels.
 
    c. If no manifest found: fall back to scanning `*.md` files at both levels and reading YAML frontmatter to extract: `name`, `icon`, `title`, `source`, `expertise`.
 
-   d. Note the data source in the output footer: `(from manifest)` or `(from file scan — run /roundtable-refresh to generate manifest)`.
+   d. Note the data source in the output footer: `(from manifest)` or `(from file scan — run /roundtable:refresh to generate manifest)`.
 
 2. Group entries by level (`global` / `project`).
 
@@ -51,5 +51,5 @@ Total: {count} personas ({global count} global, {project count} project, {overri
 
 ```
 No personas found.
-Run /roundtable-convert to generate personas from your Claude agents.
+Run /roundtable:convert to generate personas from your Claude agents.
 ```

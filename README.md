@@ -8,7 +8,7 @@ Roundtable lets you run multi-persona discussions where Claude plays several dis
 <summary><strong>Example: "Should we build or buy our authentication system?"</strong></summary>
 
 ```
-$ /roundtable-start Should we build or buy our authentication system?
+$ /roundtable Should we build or buy our authentication system?
 ```
 
 Roundtable loads the available personas and suggests a lineup:
@@ -84,7 +84,7 @@ Roundtable comes with a curated list of agent repositories you can browse and im
 **Claude Code:**
 
 ```
-/roundtable-sources
+/roundtable:sources
 ```
 
 **Claude Desktop:**
@@ -108,7 +108,7 @@ If you already have Claude agents installed locally (in `.claude/agents/` or `~/
 **Claude Code:**
 
 ```
-/roundtable-convert
+/roundtable:convert
 ```
 
 **Claude Desktop:**
@@ -122,13 +122,13 @@ Once you have personas installed:
 **Claude Code:**
 
 ```
-/roundtable-start
+/roundtable
 ```
 
 or with a topic:
 
 ```
-/roundtable-start Should we migrate our monolith to microservices?
+/roundtable Should we migrate our monolith to microservices?
 ```
 
 **Claude Desktop:**
@@ -154,10 +154,10 @@ In **Claude Desktop**, personas are always saved globally. In **Claude Code**, t
 
 | Command | Description |
 |---------|-------------|
-| `/roundtable-list` | List all installed personas |
-| `/roundtable-sources` | Browse and import from community agent repos |
-| `/roundtable-convert` | Convert local agents into personas |
-| `/roundtable-refresh` | Rebuild the persona manifest after manual edits |
+| `/roundtable:list` | List all installed personas |
+| `/roundtable:sources` | Browse and import from community agent repos |
+| `/roundtable:convert` | Convert local agents into personas |
+| `/roundtable:refresh` | Rebuild the persona manifest after manual edits |
 
 **Claude Desktop** exposes the same capabilities via MCP tools. Just ask in natural language:
 
@@ -179,7 +179,7 @@ The built-in sources are just a starting point. You can convert agents from **an
 
 > "Browse the agents from owner/repo and import the ones related to data engineering"
 
-**Claude Code** (in the `/roundtable-sources` flow):
+**Claude Code** (in the `/roundtable:sources` flow):
 
 > Provide a custom repo URL when prompted, e.g. `https://github.com/owner/repo`
 
@@ -219,7 +219,7 @@ Principles:
 - Benchmark before you optimize, measure before you benchmark
 ```
 
-After creating or editing persona files manually, run `/roundtable-refresh` (Claude Code) or ask Claude Desktop to refresh the manifest.
+After creating or editing persona files manually, run `/roundtable:refresh` (Claude Code) or ask Claude Desktop to refresh the manifest.
 
 ## License
 

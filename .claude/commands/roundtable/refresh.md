@@ -67,5 +67,5 @@ Project: {count} personas → .claude/roundtable/manifest.json
 
 If no persona files are found at either level:
 ```
-No persona files found. Run /roundtable-convert to generate personas first.
+No persona files found. Run /roundtable:convert to generate personas first.
 ```
