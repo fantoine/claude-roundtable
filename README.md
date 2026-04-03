@@ -1,6 +1,15 @@
-# Roundtable
+<div align="center">
+  <img src="extension/icon.svg" width="96" height="96" />
 
-**Turn Claude into a room full of experts.**
+  # Roundtable
+
+  **Turn Claude into a room full of experts.**
+
+  ![version](https://img.shields.io/badge/version-0.4.0-6c63ff)
+  ![license](https://img.shields.io/badge/license-Apache%202.0-blue)
+</div>
+
+---
 
 Roundtable lets you run multi-persona discussions where Claude plays several distinct characters -- each with their own expertise, communication style, and personality. Instead of getting one generic answer, you get a debate between a security expert, a product strategist, and a performance engineer -- all in the same conversation.
 
