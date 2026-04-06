@@ -60,7 +60,7 @@ Examples of good one-liners:
 **Actions**:
 
 1. Determine the discussion context using this priority order:
-   - **`$ARGUMENTS` provided** → use it directly (e.g. `/roundtable-start SaaS onboarding funnel`)
+   - **`$ARGUMENTS` provided** → use it directly (e.g. `/roundtable:start SaaS onboarding funnel`)
    - **No arguments, but conversation has a clear topic** → infer from conversation history
    - **No context available** → ask the user warmly:
      ```

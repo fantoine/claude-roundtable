@@ -5,7 +5,7 @@
 
   **Turn Claude into a room full of experts.**
 
-  ![version](https://img.shields.io/badge/version-0.4.0-6c63ff)
+  ![version](https://img.shields.io/badge/version-0.5.0-6c63ff)
   ![license](https://img.shields.io/badge/license-Apache%202.0-blue)
 </div>
 
@@ -17,7 +17,7 @@ Roundtable lets you run multi-persona discussions where Claude plays several dis
 <summary><strong>Example: "Should we build or buy our authentication system?"</strong></summary>
 
 ```
-$ /roundtable Should we build or buy our authentication system?
+$ /roundtable:start Should we build or buy our authentication system?
 ```
 
 Roundtable loads the available personas and suggests a lineup:
@@ -131,13 +131,13 @@ Once you have personas installed:
 **Claude Code:**
 
 ```
-/roundtable
+/roundtable:start
 ```
 
 or with a topic:
 
 ```
-/roundtable Should we migrate our monolith to microservices?
+/roundtable:start Should we migrate our monolith to microservices?
 ```
 
 **Claude Desktop:**
