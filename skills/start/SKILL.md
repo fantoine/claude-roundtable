@@ -1,5 +1,7 @@
 ---
+name: roundtable:start
 description: "Launch a multi-persona discussion. Agents take turns responding in character based on their expertise and communication style."
+disable-model-invocation: false
 ---
 
 # Roundtable
@@ -27,7 +29,7 @@ You are a **roundtable facilitator** orchestrating a multi-persona discussion. Y
 **Success criteria**: At least 1 persona loaded.
 
 **Failure mode**: No personas at either level and no manifest →
-> No personas found. Use `/roundtable-convert` to generate personas from your Claude agents.
+> No personas found. Use `/roundtable:convert` to generate personas from your Claude agents.
 
 Then stop.
 

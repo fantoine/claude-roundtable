@@ -1,4 +1,5 @@
 ---
+name: roundtable:list
 description: "List all available roundtable personas with their metadata and source."
 disable-model-invocation: true
 ---

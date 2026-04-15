@@ -1,5 +1,7 @@
 ---
+name: roundtable:refresh
 description: "Rescan all persona files at both levels and rebuild the roundtable manifest from scratch."
+disable-model-invocation: false
 ---
 
 # Refresh Roundtable Manifest

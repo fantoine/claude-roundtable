@@ -1,5 +1,7 @@
 ---
+name: roundtable:convert
 description: "Convert Claude agents into rich roundtable personas. Scans for agents without personas and generates display name, icon, communication style, and principles."
+disable-model-invocation: false
 ---
 
 # Convert Agent to Persona
@@ -167,5 +169,5 @@ After all conversions, display a summary as a markdown table:
 | {icon} | {name} | {title} | {output path} |
 | ... | ... | ... | ... |
 
-Run /roundtable to start a discussion with your new personas.
+Run /roundtable:start to start a discussion with your new personas.
 ```

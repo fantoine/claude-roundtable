@@ -1,10 +1,9 @@
 {
   "name": "roundtable",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Multi-persona discussions with your Claude agents. Convert any Claude agent into a rich persona and orchestrate collaborative mono-LLM conversations.",
   "author": {
     "name": "Fabien ANTOINE"
   },
-  "license": "Apache-2.0",
-  "commands": "./commands/"
+  "license": "Apache-2.0"
 }

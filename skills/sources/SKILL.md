@@ -1,5 +1,7 @@
 ---
+name: roundtable:sources
 description: "Browse curated agent repositories to discover and import personas."
+disable-model-invocation: false
 ---
 
 # Sources
