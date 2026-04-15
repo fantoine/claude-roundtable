@@ -2,14 +2,14 @@
   "name": "roundtable-mcp",
   "version": "0.6.0",
   "description": "MCP server for multi-persona roundtable discussions",
-  "type": "module",
   "main": "dist/index.js",
   "bin": {
     "roundtable-mcp": "dist/index.js"
   },
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
+    "build": "esbuild src/index.ts --bundle --platform=node --format=cjs --minify --outfile=dist/index.js",
+    "dev": "esbuild src/index.ts --bundle --platform=node --format=cjs --minify --outfile=dist/index.js --watch",
+    "typecheck": "tsc --noEmit",
     "start": "node dist/index.js"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.15.0",
+    "esbuild": "^0.28.0",
     "typescript": "^5.8.3"
   },
   "engines": {
