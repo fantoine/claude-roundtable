@@ -1,5 +1,5 @@
 node_modules/
-dist/
+extension/dist/
 *.tsbuildinfo
 .DS_Store
 icon.png

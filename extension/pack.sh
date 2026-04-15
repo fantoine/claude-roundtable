@@ -9,7 +9,7 @@ echo ""
 
 # 1. Build the MCP server
 echo "→ Building MCP server..."
-cd "$ROOT/mcp-server"
+cd "$ROOT/../mcp-server"
 npm install --silent
 npm run build --silent
 echo "  ✓ Build complete"
@@ -32,12 +32,12 @@ fi
 echo "  ✓ Icon generated"
 
 # 4. Copy compiled server files and inject version
-VERSION=$(node -p "require('$ROOT/mcp-server/package.json').version")
-cp "$ROOT/mcp-server/dist/"*.js "$DIST_DIR/server/"
+VERSION=$(node -p "require('$ROOT/../mcp-server/package.json').version")
+cp "$ROOT/../mcp-server/dist/"*.js "$DIST_DIR/server/"
 sed -i '' "s/__VERSION__/$VERSION/g" "$DIST_DIR/server/index.js"
 
 # 5. Install production deps directly in the bundle server dir
-cp "$ROOT/mcp-server/package.json" "$DIST_DIR/server/package.json"
+cp "$ROOT/../mcp-server/package.json" "$DIST_DIR/server/package.json"
 cd "$DIST_DIR/server"
 npm install --omit=dev --silent
 rm -f package.json package-lock.json
