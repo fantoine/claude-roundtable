@@ -1,6 +1,6 @@
 {
   "name": "roundtable-mcp",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "MCP server for multi-persona roundtable discussions",
   "main": "dist/index.js",
   "bin": {

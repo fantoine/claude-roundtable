@@ -5,7 +5,7 @@
 
   **Turn Claude into a room full of experts.**
 
-  ![version](https://img.shields.io/badge/version-0.6.0-6c63ff)
+  ![version](https://img.shields.io/badge/version-0.6.1-6c63ff)
   ![license](https://img.shields.io/badge/license-Apache%202.0-blue)
 </div>
 
